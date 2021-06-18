@@ -8,7 +8,7 @@ type Props = {
 
 const SearchInput = ({ onChange, ...props }: Props) => {
 	return (
-		<InputGroup w={'300px'}>
+		<InputGroup w={['200px','300px']}>
 			<InputLeftElement
 				pointerEvents='none'
 				children={<FiSearch color='gray.300' />}

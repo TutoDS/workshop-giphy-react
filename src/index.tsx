@@ -1,4 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react';
+import '@fontsource/poppins';
 import App from 'pages/App';
 import React from 'react';
 import ReactDOM from 'react-dom';

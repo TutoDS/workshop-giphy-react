@@ -1,4 +1,4 @@
-import { Box, Center, Flex } from '@chakra-ui/react';
+import { Box, Flex, Heading } from '@chakra-ui/react';
 import Gif from 'components/Gif';
 import GifGrid from 'components/GifGrid';
 import SearchInput from 'components/inputs/SearchInput';
@@ -99,14 +99,13 @@ const App = () => {
 	}, []);
 
 	return (
-		<Flex overflow={'hidden'}>
+		<Flex overflow={'hidden'} direction={['column', 'row']}>
 			<Box flex={'1'} height={'100vh'} px={10} gap={10}>
 				<Flex
 					spacing={4}
 					justifyContent={'space-between'}
 					alignItems={'center'}
-					py={10}
-					px={20}
+					py={[10, 20]}
 				>
 					<SearchInput onChange={onSearch} />
 
@@ -118,13 +117,37 @@ const App = () => {
 					/>
 				</Flex>
 
-				<Center>
+				<Flex
+					alignItems={'center'}
+					justifyContent={'center'}
+					direction={'column'}
+					gap={2}
+				>
+					<Heading
+						as={'h2'}
+						display={['', 'none']}
+						color={'blue.200'}
+						mb={4}
+						fontWeight={'300'}
+					>
+						Current Selected Gif
+					</Heading>
+
 					{listOfGifs.currentSelected && (
 						<Gif id={listOfGifs.currentSelected} />
 					)}
-				</Center>
+				</Flex>
 			</Box>
-			<Box width={'25vw'}>
+			<Box width={['100%', '25vw']} mt={[10, 0]}>
+				<Heading
+					textAlign={'center'}
+					as={'h2'}
+					fontWeight={'300'}
+					display={['', 'none']}
+					mb={4}
+				>
+					List of Gifs
+				</Heading>
 				<GifGrid gifs={listOfGifs.gifs} onClick={setHasCurrent} />
 			</Box>
 		</Flex>

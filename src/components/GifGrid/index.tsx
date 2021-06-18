@@ -12,7 +12,7 @@ const GifGrid = ({ gifs, onClick, ...props }: Props) => {
 			maxH={'100vh'}
 			overflowY={'auto'}
 			padding={10}
-			templateColumns={'repeat(2, 1fr)'}
+			templateColumns={['1fr', 'repeat(2, 1fr)']}
 			gap={4}
 		>
 			{gifs.map((gif) => (
