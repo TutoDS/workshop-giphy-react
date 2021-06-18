@@ -1,17 +1,9 @@
-import {
-	Box,
-	Center,
-	Flex,
-	Grid,
-	Input,
-	InputGroup,
-	InputLeftElement,
-	Spinner
-} from '@chakra-ui/react';
+import { Box, Center, Flex } from '@chakra-ui/react';
 import Gif from 'components/Gif';
+import GifGrid from 'components/GifGrid';
+import SearchInput from 'components/inputs/SearchInput';
 import { ThemeSwitcher } from 'components/ThemeSwitcher';
 import { ChangeEvent, useEffect, useState } from 'react';
-import { FiSearch } from 'react-icons/fi';
 import { getIdFromUrl } from 'utils/functions/getIdFromUrl';
 import { giphyApi } from 'utils/giphyApi';
 
@@ -33,7 +25,11 @@ const App = () => {
 		gifs: []
 	});
 
-	const onChange = async (evt: ChangeEvent<HTMLInputElement>) => {
+	/**
+	 * On Search method
+	 * @param evt Change Event of input
+	 */
+	const onSearch = async (evt: ChangeEvent<HTMLInputElement>) => {
 		const params =
 			evt.target.value.length > 0
 				? { rating: 'g', q: evt.target.value }
@@ -53,6 +49,10 @@ const App = () => {
 		}));
 	};
 
+	/**
+	 * Set the current gif to show on left side
+	 * @param id id of gif
+	 */
 	const setHasCurrent = (id: string) => {
 		setListOfGifs((prevState) => ({
 			...prevState,
@@ -61,6 +61,9 @@ const App = () => {
 	};
 
 	useEffect(() => {
+		/**
+		 * Get list of trending gifs to populate grid
+		 */
 		const fetchData = async () => {
 			const { data } = await giphyApi.get('/trending', {
 				params: {
@@ -69,9 +72,17 @@ const App = () => {
 				}
 			});
 
-			return data;
+			setListOfGifs((prevState) => ({
+				...prevState,
+				gifs: data.data.map((res: GifType): string =>
+					getIdFromUrl(res.images.original.url)
+				)
+			}));
 		};
 
+		/**
+		 * Get a rondom gif to first load
+		 */
 		const getRandomGif = async () => {
 			const { data } = await giphyApi.get('/random', {
 				params: { rating: 'g' }
@@ -84,19 +95,7 @@ const App = () => {
 		};
 
 		getRandomGif();
-
-		const getIds = async () => {
-			const results = await fetchData();
-
-			setListOfGifs((prevState) => ({
-				...prevState,
-				gifs: results.data.map((res: GifType): string =>
-					getIdFromUrl(res.images.original.url)
-				)
-			}));
-		};
-
-		getIds();
+		fetchData();
 	}, []);
 
 	return (
@@ -109,17 +108,7 @@ const App = () => {
 					py={10}
 					px={20}
 				>
-					<InputGroup w={'300px'}>
-						<InputLeftElement
-							pointerEvents='none'
-							children={<FiSearch color='gray.300' />}
-						/>
-						<Input
-							onChange={onChange}
-							type='text'
-							placeholder='Search'
-						/>
-					</InputGroup>
+					<SearchInput onChange={onSearch} />
 
 					<ThemeSwitcher
 						size={'sm'}
@@ -130,34 +119,13 @@ const App = () => {
 				</Flex>
 
 				<Center>
-					{listOfGifs.currentSelected ? (
+					{listOfGifs.currentSelected && (
 						<Gif id={listOfGifs.currentSelected} />
-					) : (
-						<Spinner size={'xl'} label={'Loading Gif!'} />
 					)}
 				</Center>
 			</Box>
-			<Box>
-				{listOfGifs.gifs ? (
-					<Grid
-						maxH={'100vh'}
-						overflowY={'auto'}
-						width={'25vw'}
-						padding={10}
-						templateColumns={'repeat(2, 1fr)'}
-						gap={4}
-					>
-						{listOfGifs.gifs.map((gif) => (
-							<Gif
-								onClick={() => setHasCurrent(gif)}
-								id={gif}
-								key={gif}
-							/>
-						))}
-					</Grid>
-				) : (
-					<Spinner size={'xl'} label={'Loading Gifs!'} />
-				)}
+			<Box width={'25vw'}>
+				<GifGrid gifs={listOfGifs.gifs} onClick={setHasCurrent} />
 			</Box>
 		</Flex>
 	);
