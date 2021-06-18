@@ -32,7 +32,7 @@ const App = () => {
 	const onSearch = async (evt: ChangeEvent<HTMLInputElement>) => {
 		const params =
 			evt.target.value.length > 0
-				? { rating: 'g', q: evt.target.value }
+				? { rating: 'g', q: evt.target.value, limit: '15' }
 				: { rating: 'g' };
 
 		const endpoint = evt.target.value.length > 0 ? '/search' : '/trending';
