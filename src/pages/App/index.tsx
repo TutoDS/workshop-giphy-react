@@ -105,7 +105,7 @@ const App = () => {
 					spacing={4}
 					justifyContent={'space-between'}
 					alignItems={'center'}
-					py={[10, 20]}
+					py={10}
 				>
 					<SearchInput onChange={onSearch} />
 
