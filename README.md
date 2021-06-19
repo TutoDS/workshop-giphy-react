@@ -40,7 +40,10 @@ In `package.json` add on scripts:
 "postinstall": "husky install",
 ```
 
-After that run on your terminal: `yarn husky add .husky/pre-commit "yarn lint-staged"` or with **npm**: `npx husky add .husky/pre-commit "npm lint-staged`
+After that run on your terminal:
+
+-   **With Yarn:** `yarn husky add .husky/pre-commit "yarn lint-staged"`
+-   **With NPM:** `npx husky add .husky/pre-commit "npm lint-staged`
 
 <br /><br />
 
