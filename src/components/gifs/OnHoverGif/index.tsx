@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Gif from '../Gif';
-import StaticGif from '../StaticGif';
 
 type Props = {
 	id: string;
@@ -15,7 +14,7 @@ const OnHoverGif = ({ id, onClick }: Props) => {
 			onMouseEnter={() => setIsHover(true)}
 			onMouseLeave={() => setIsHover(false)}
 		>
-			{!isHover && <StaticGif onClick={onClick} id={id} />}
+			{!isHover && <Gif isStatic onClick={onClick} id={id} />}
 
 			{isHover && <Gif onClick={onClick} id={id} />}
 		</div>

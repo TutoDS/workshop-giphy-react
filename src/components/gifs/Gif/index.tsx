@@ -3,13 +3,16 @@ import { useState } from 'react';
 
 type Props = {
 	id: string;
+	isStatic?: boolean;
 	onClick?: () => void;
 };
 
-const Gif = ({ id, onClick, ...props }: Props) => {
+const Gif = ({ id, isStatic = false, onClick, ...props }: Props) => {
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 
-	const url = `https://media4.giphy.com/media/${id}/giphy.gif`;
+	const url = `https://media4.giphy.com/media/${id}/giphy.${
+		isStatic ? 'gif' : 'jpg'
+	}`;
 
 	return (
 		<Center minH={'200px'} minW={'200px'}>
