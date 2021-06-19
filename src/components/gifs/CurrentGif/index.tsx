@@ -11,7 +11,7 @@ const CurrentGif = () => {
 		<>
 			{!listOfGifs.current && (
 				<>
-					<Heading as={'h3'}>
+					<Heading as={'h3'} fontSize={'md'} textAlign={'center'}>
 						You haven't selected any gif yet!
 					</Heading>
 
