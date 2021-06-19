@@ -30,7 +30,7 @@
   <img alt="Vercel" src="https://img.shields.io/badge/vercel%20-%23000000.svg?&style=for-the-badge&logo=vercel&logoColor=white" alt='Deploy'/>
 </a>
 
-<br /><br />
+<br />
 
 <h2 style="font-weight:300">How to fix <strong>Husky</strong> to run <code>pre-commit</code>:</h2>
 
