@@ -1,11 +1,9 @@
-import { Button, Flex, Heading, Spinner } from '@chakra-ui/react';
+import { Button, Flex, Heading } from '@chakra-ui/react';
 import { useGiphy } from 'contexts/GiphyContext';
-import { useState } from 'react';
 import { FiFrown, FiSmile } from 'react-icons/fi';
 import Gif from '../Gif';
 
 const CurrentGif = () => {
-	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const { listOfGifs, loadRandomGif, clearCurrentGif } = useGiphy();
 
 	return (
@@ -35,10 +33,6 @@ const CurrentGif = () => {
 					minH={'200px'}
 					minW={'200px'}
 				>
-					{isLoading && (
-						<Spinner size={'xl'} label={'Loading Gifs!'} />
-					)}
-
 					<Gif id={listOfGifs.current} />
 
 					<Button

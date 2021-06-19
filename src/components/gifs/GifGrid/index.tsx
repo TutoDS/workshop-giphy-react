@@ -1,6 +1,6 @@
 import { Grid } from '@chakra-ui/react';
-import Gif from 'components/gifs/Gif';
 import { useGiphy } from 'contexts/GiphyContext';
+import OnHoverGif from '../OnHoverGif';
 
 const GifGrid = () => {
 	const { listOfGifs, setCurrentGif } = useGiphy();
@@ -14,7 +14,16 @@ const GifGrid = () => {
 			gap={4}
 		>
 			{listOfGifs?.gifs.map((gif: string) => (
-				<Gif onClick={() => setCurrentGif(gif)} id={gif} key={gif} />
+				// <StaticGif
+				// 	onClick={() => setCurrentGif(gif)}
+				// 	id={gif}
+				// 	key={gif}
+				// />
+				<OnHoverGif
+					id={gif}
+					key={gif}
+					onClick={() => setCurrentGif(gif)}
+				/>
 			))}
 		</Grid>
 	);

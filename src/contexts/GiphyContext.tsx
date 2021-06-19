@@ -29,7 +29,7 @@ export const GiphyContextProvider = ({ children }: Props) => {
 		const loadGifs = async () => {
 			const { data } = await giphyApi.get('/trending', {
 				params: {
-					limit: '16',
+					limit: '32',
 					rating: 'g'
 				}
 			});
@@ -48,7 +48,7 @@ export const GiphyContextProvider = ({ children }: Props) => {
 	const onSearch = async (evt: ChangeEvent<HTMLInputElement>) => {
 		const params =
 			evt.target.value.length > 0
-				? { rating: 'g', q: evt.target.value, limit: '16' }
+				? { rating: 'g', q: evt.target.value, limit: '32' }
 				: { rating: 'g' };
 
 		const endpoint = evt.target.value.length > 0 ? '/search' : '/trending';

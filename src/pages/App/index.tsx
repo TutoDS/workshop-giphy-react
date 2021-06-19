@@ -1,4 +1,4 @@
-import { Box, Flex, Heading } from '@chakra-ui/react';
+import { Alert, AlertIcon, Box, Flex, Heading } from '@chakra-ui/react';
 import CurrentGif from 'components/gifs/CurrentGif';
 import GifGrid from 'components/gifs/GifGrid';
 import SearchInput from 'components/inputs/SearchInput';
@@ -10,7 +10,7 @@ const App = () => {
 
 	return (
 		<Flex overflow={'hidden'} direction={['column', 'row']}>
-			<Box flex={'1'} height={'100vh'} px={10} gap={10}>
+			<Box flex={'1'} height={'100vh'} px={10} gap={10} pos={'relative'}>
 				<Flex
 					spacing={4}
 					justifyContent={'space-between'}
@@ -40,6 +40,16 @@ const App = () => {
 
 					<CurrentGif />
 				</Flex>
+				<Alert
+					width={'1/2'}
+					status='info'
+					pos={'absolute'}
+					bottom={5}
+					left={5}
+				>
+					<AlertIcon />
+					To see the gif put the mouse on image
+				</Alert>
 			</Box>
 			<Box width={['100%', '25vw']} mt={[10, 0]}>
 				<Heading
