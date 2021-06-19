@@ -11,6 +11,7 @@
 		"url": "https://github.com/TutoDS/workshop-giphy-react"
 	},
 	"scripts": {
+		"postinstall": "husky install",
 		"dev": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
@@ -54,6 +55,16 @@
 			"last 1 chrome version",
 			"last 1 firefox version",
 			"last 1 safari version"
+		]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged & git add ."
+		}
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,json,css,scss,md}": [
+			"prettier --write"
 		]
 	}
 }

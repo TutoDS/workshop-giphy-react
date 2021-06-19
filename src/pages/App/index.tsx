@@ -5,19 +5,6 @@ import SearchInput from 'components/inputs/SearchInput';
 import { ThemeSwitcher } from 'components/ThemeSwitcher';
 import { useGiphy } from 'contexts/GiphyContext';
 
-// type GifType = {
-// 	images: {
-// 		original: {
-// 			url: string;
-// 		};
-// 	};
-// };
-
-// type ListOfGifsType = {
-// 	gifs: string[];
-// 	currentSelected?: string;
-// };
-
 const App = () => {
 	const { onSearch } = useGiphy();
 
