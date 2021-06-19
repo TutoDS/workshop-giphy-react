@@ -52,7 +52,7 @@ const CurrentGif = () => {
 						colorScheme={'teal'}
 						leftIcon={<FiFrown />}
 					>
-						<span>Clear Current Icon</span>
+						<span>Clear Current Gif</span>
 					</Button>
 				</Flex>
 			)}
