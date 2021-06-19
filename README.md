@@ -22,10 +22,7 @@
 	</a>
 </div>
 
-
 <br />
-
-
 
 <h2 style="font-weight:300">🌐 Deploy:</h2>
 
@@ -33,7 +30,17 @@
   <img alt="Vercel" src="https://img.shields.io/badge/vercel%20-%23000000.svg?&style=for-the-badge&logo=vercel&logoColor=white" alt='Deploy'/>
 </a>
 
+<br /><br />
 
+<h2 style="font-weight:300">How to fix <strong>Husky</strong> to run <code>pre-commit</code>:</h2>
+
+In `package.json` add on scripts:
+
+```json
+"postinstall": "husky install",
+```
+
+After that run on your terminal: `yarn husky add .husky/pre-commit "yarn lint-staged"` or with **npm**: `npx husky add .husky/pre-commit "npm lint-staged`
 
 <br /><br />
 
