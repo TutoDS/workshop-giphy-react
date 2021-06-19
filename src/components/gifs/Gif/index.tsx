@@ -13,7 +13,7 @@ const Gif = ({ id, onClick, ...props }: Props) => {
 
 	return (
 		<Center minH={'200px'} minW={'200px'}>
-			{isLoading && <Spinner size={'xl'} label={'Loading Gifs!'} />}
+			{isLoading && <Spinner size={'xl'} label={'Loading Gif!'} />}
 
 			<Image
 				width={'500px'}
