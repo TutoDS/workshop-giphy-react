@@ -12,7 +12,7 @@ const CurrentGif = () => {
 			{!listOfGifs.current && (
 				<>
 					<Heading as={'h3'}>
-						You haven't selected any gif yet.!
+						You haven't selected any gif yet!
 					</Heading>
 
 					<Button
