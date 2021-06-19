@@ -15,6 +15,7 @@ const ThemeSwitcher: React.FC<Partial<Props>> = ({
 
 	return (
 		<IconButton
+			colorScheme={'teal'}
 			{...attributes}
 			onClick={toggleColorMode}
 			variant={variant || 'solid'}

@@ -10,7 +10,6 @@ const Gif = ({ id, onClick, ...props }: Props) => {
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 
 	const url = `https://media4.giphy.com/media/${id}/giphy.gif`;
-	console.log(url, id);
 
 	return (
 		<Center minH={'200px'} minW={'200px'}>
