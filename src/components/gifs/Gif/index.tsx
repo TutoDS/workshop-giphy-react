@@ -10,8 +10,8 @@ type Props = {
 const Gif = ({ id, isStatic = false, onClick, ...props }: Props) => {
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 
-	const url = `https://media4.giphy.com/media/${id}/giphy.${
-		isStatic ? 'gif' : 'jpg'
+	const url = `https://media4.giphy.com/media/${id}/${
+		isStatic ? '480w_s.jpg' : 'giphy.gif'
 	}`;
 
 	return (
