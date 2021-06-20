@@ -34,8 +34,6 @@ export const GiphyContextProvider = ({ children }: Props) => {
 				}
 			});
 
-			console.log(data.data);
-
 			setListOfGifs((prevState) => ({
 				...prevState,
 				gifs: data.data.map((res: GifType): string =>

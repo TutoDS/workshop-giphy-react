@@ -10,15 +10,18 @@ type Props = {
 const Gif = ({ id, isStatic = false, onClick, ...props }: Props) => {
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 
-	const url = `https://media4.giphy.com/media/${id}/${
+	const [extension, setExtension] = useState<string>(
 		isStatic ? '480w_s.jpg' : 'giphy.gif'
-	}`;
+	);
+
+	const url = `https://media4.giphy.com/media/${id}/${extension}`;
 
 	return (
 		<Center minH={'200px'} minW={'200px'}>
 			{isLoading && <Spinner size={'xl'} label={'Loading Gif!'} />}
 
 			<Image
+				onError={() => setExtension('giphy.gif')}
 				width={'500px'}
 				onClick={onClick && onClick}
 				{...props}
